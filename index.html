@@ -8,145 +8,221 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --main-blue: #0f172a; --accent-gold: #fbbf24; }
-        body { font-family: 'Hind Siliguri', sans-serif; background-color: #f8fafc; }
-        .hero-gradient { background: radial-gradient(circle at top right, #1e293b, #0f172a); }
-        .module-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid #e2e8f0; }
-        .module-card:hover { transform: translateY(-10px); border-color: #3b82f6; box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.15); }
+        :root {
+            --ink: #101a2b;
+            --navy: #16234a;
+            --blue: #2454e0;
+            --blue-light: #4d78ff;
+            --teal: #0e8f8a;
+            --amber: #e08b1d;
+            --violet: #6f52d6;
+            --paper: #f6f8fc;
+            --line: #e3e8f2;
+            --slate: #5c6b82;
+        }
+        * { font-family: 'Hind Siliguri', sans-serif; }
+        body { background-color: var(--paper); color: var(--ink); }
         .arabic-text { font-family: 'Amiri', serif; direction: rtl; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
-        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+
+        .hero-bg {
+            background: radial-gradient(circle at 15% 20%, #1c3a8f 0%, var(--navy) 45%, var(--ink) 100%);
+        }
+
+        .btn-primary { background: var(--blue); color: #fff; transition: all .25s ease; }
+        .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 12px 24px -10px rgba(36,84,224,0.5); }
+
+        .btn-ghost { background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.18); transition: all .25s ease; }
+        .btn-ghost:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
+
+        .tool-card { border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); transition: all .25s ease; }
+        .tool-card:hover { transform: translateY(-4px); border-color: var(--accent, var(--blue-light)); background: rgba(255,255,255,0.08); }
+
+        .module-card { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--accent); transition: all .3s cubic-bezier(.4,0,.2,1); }
+        .module-card:hover { transform: translateY(-6px); box-shadow: 0 24px 44px -22px rgba(16,26,43,0.25); }
+
+        .badge { background: var(--accent-soft); color: var(--accent); }
+        .link-btn { color: var(--accent); border: 1.5px solid var(--accent); transition: all .25s ease; }
+        .link-btn:hover { background: var(--accent); color: #fff; }
+
+        .stat-num { color: var(--ink); }
+
+        .scroll-reveal { opacity: 0; transform: translateY(24px); transition: all 0.7s cubic-bezier(0.4,0,0.2,1); }
         .reveal { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
-    <header class="hero-gradient text-white relative overflow-hidden py-32 px-6">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl -ml-32 -mb-32"></div>
-        
-        <div class="max-w-6xl mx-auto text-center relative z-10">
-            <span class="inline-block px-4 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-bold tracking-widest uppercase mb-6 animate-pulse">খুব সহজে বিনামূল্যে আরবি ব্যাকরণ শেখার প্লাটফর্ম</span><br>
-            <h1 class="text-6xl md:text-8xl font-black mb-8 leading-tight">আরবি ব্যাকরণ <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">কোর্স-প্লাস</span></h1>
-            <p class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-                শুন্য থেকে উচ্চ পর্যায় পর্যন্ত আরবি ব্যাকরণের ২০টি গুরুত্বপূর্ণ অধ্যায়কে সাজানো হয়েছে চারটি ইন্টারেক্টিভ মডিউলে। প্রতিটি পাঠে রয়েছে সহজ বর্ণনা ও উদাহরণ। 
+    <!-- HERO -->
+    <header class="hero-bg text-white relative py-28 md:py-32 px-6 overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl -mr-48 -mt-48"></div>
+        <div class="absolute bottom-0 left-0 w-72 h-72 bg-violet-500/20 rounded-full blur-3xl -ml-32 -mb-32"></div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <span class="inline-block px-4 py-1.5 bg-blue-500/20 text-blue-300 rounded-full text-sm font-semibold tracking-wide mb-6">১০০% বিনামূল্যে · আরবি ব্যাকরণ শিক্ষা</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-7 leading-tight">আরবি ব্যাকরণ <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-violet-400 to-teal-300">কোর্স-প্লাস</span></h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-11 font-light leading-relaxed">
+                শুন্য থেকে উচ্চ পর্যায় পর্যন্ত আরবি ব্যাকরণের ২০টি গুরুত্বপূর্ণ অধ্যায়, চারটি ধারাবাহিক মডিউলে সাজানো। প্রতিটি পাঠে সহজ বর্ণনা ও বাস্তব উদাহরণ।
             </p>
-            <div class="flex flex-wrap justify-center gap-6">
-                <a href="#curriculum" class="px-10 py-5 bg-orange-600 hover:bg-blue-700 rounded-2xl font-bold text-lg shadow-xl shadow-blue-500/20 transition-all">এক্ষুনি কোর্সটি শুরু করুন</a>
-                <a href="http://arabic-verb-conjugator.vercel.app" target="_blank" class="px-10 py-5 bg-purple-600 hover:bg-blue-700 rounded-2xl font-bold text-lg shadow-xl shadow-blue-500/20 transition-all">আরবি ক্রিয়া রূপান্তর করুন</a>
-                <a href="http://arabic-sentence-builder.vercel.app" target="_blank" class="px-10 py-5 bg-green-600 hover:bg-blue-700 rounded-2xl font-bold text-lg shadow-xl shadow-blue-500/20 transition-all">আরবি বাক্য তৈরি করুন</a>
-                <a href="https://learn-quran-50.vercel.app" target="_blank" class="px-10 py-5 bg-pink-600 hover:bg-blue-700 rounded-2xl font-bold text-lg shadow-xl shadow-blue-500/20 transition-all">কুরআনের ৫০ ভাগ শিখুন</a>
-                <a href="https://quranic-word-builder.vercel.app" target="_blank" class="px-10 py-5 bg-yellow-600 hover:bg-blue-700 rounded-2xl font-bold text-lg shadow-xl shadow-blue-500/20 transition-all">কুরআনিক শব্দ তৈরি করুন</a>
-                <a href="quranic-grammar.html" target="_blank" class="px-10 py-5 bg-blue-600 hover:bg-blue-700 rounded-2xl font-bold text-lg shadow-xl shadow-blue-500/20 transition-all"> কুরআনিক গ্রামার শিখুন </a>
-                <a href="https://ruqyah-tracker.vercel.app" target="_blank" class="px-10 py-5 bg-purple-600 hover:bg-blue-700 rounded-2xl font-bold text-lg shadow-xl shadow-blue-500/20 transition-all">সহজে রুকিয়াহ ট্র্যাক করুন</a>
-                 <a href="https://quran.com/bn/1" target="_blank" class="px-10 py-5 bg-orange-600 hover:bg-blue-700 rounded-2xl font-bold text-lg shadow-xl shadow-blue-500/20 transition-all">শব্দে শব্দে কুরআন শিখুন</a>
-            </div>
+            <a href="#curriculum" class="inline-block px-10 py-4 btn-primary rounded-xl font-semibold text-base">এক্ষুনি কোর্সটি শুরু করুন</a>
         </div>
     </header>
 
-    <section class="py-12 bg-white border-b border-slate-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <h3 class="text-4xl font-black text-slate-800">১০০%</h3>
-                    <p class="text-slate-500">ফ্রি কন্টেন্ট</p>
+    <!-- TOOLS STRIP -->
+    <section class="bg-[color:var(--navy)] py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+            <p class="text-blue-300 text-sm font-semibold tracking-wide text-center mb-2">সহায়ক টুলস</p>
+            <h2 class="text-white text-2xl md:text-3xl font-bold text-center mb-10">চর্চার জন্য ইন্টারেক্টিভ রিসোর্স</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <a href="http://arabic-verb-conjugator.vercel.app" target="_blank" class="tool-card rounded-xl p-5 flex flex-col gap-2" style="--accent:#4d78ff">
+                    <i class="fa-solid fa-rotate text-blue-400 text-lg"></i>
+                    <span class="font-semibold text-white">ক্রিয়া রূপান্তর</span>
+                    <span class="text-sm text-slate-400">ফিল কনজুগেশন অনুশীলন</span>
+                </a>
+                <a href="http://arabic-sentence-builder.vercel.app" target="_blank" class="tool-card rounded-xl p-5 flex flex-col gap-2" style="--accent:#2dd4bf">
+                    <i class="fa-solid fa-diagram-project text-teal-400 text-lg"></i>
+                    <span class="font-semibold text-white">বাক্য নির্মাতা</span>
+                    <span class="text-sm text-slate-400">নিজে বাক্য তৈরি করুন</span>
+                </a>
+                <a href="https://quranic-word-builder.vercel.app" target="_blank" class="tool-card rounded-xl p-5 flex flex-col gap-2" style="--accent:#a78bfa">
+                    <i class="fa-solid fa-layer-group text-violet-400 text-lg"></i>
+                    <span class="font-semibold text-white">কুরআনিক শব্দ নির্মাতা</span>
+                    <span class="text-sm text-slate-400">মূল ধাতু থেকে শব্দ গঠন</span>
+                </a>
+                <a href="quranic-grammar.html" target="_blank" class="tool-card rounded-xl p-5 flex flex-col gap-2" style="--accent:#fbbf24">
+                    <i class="fa-solid fa-book-quran text-amber-400 text-lg"></i>
+                    <span class="font-semibold text-white">কুরআনিক গ্রামার</span>
+                    <span class="text-sm text-slate-400">আয়াতভিত্তিক ব্যাকরণ বিশ্লেষণ</span>
+                </a>
+                <a href="https://learn-quran-50.vercel.app" target="_blank" class="tool-card rounded-xl p-5 flex flex-col gap-2" style="--accent:#fb7185">
+                    <i class="fa-solid fa-percent text-rose-400 text-lg"></i>
+                    <span class="font-semibold text-white">কুরআনের ৫০ ভাগ</span>
+                    <span class="text-sm text-slate-400">সর্বাধিক ব্যবহৃত শব্দভাণ্ডার</span>
+                </a>
+                <a href="https://ruqyah-tracker.vercel.app" target="_blank" class="tool-card rounded-xl p-5 flex flex-col gap-2" style="--accent:#34d399">
+                    <i class="fa-solid fa-list-check text-emerald-400 text-lg"></i>
+                    <span class="font-semibold text-white">রুকিয়াহ ট্র্যাকার</span>
+                    <span class="text-sm text-slate-400">দৈনিক আমল রেকর্ড করুন</span>
+                </a>
+                <a href="https://quran.com/bn/1" target="_blank" class="tool-card rounded-xl p-5 flex flex-col gap-2" style="--accent:#60a5fa">
+                    <i class="fa-solid fa-spell-check text-blue-300 text-lg"></i>
+                    <span class="font-semibold text-white">শব্দে শব্দে কুরআন</span>
+                    <span class="text-sm text-slate-400">Word-by-word অনুবাদ</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="py-14 bg-white border-b border-[color:var(--line)]">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <h3 class="text-4xl font-bold stat-num">১০০%</h3>
+                    <p class="text-[color:var(--slate)] text-sm mt-1">ফ্রি কন্টেন্ট</p>
                 </div>
-                <div class="text-center">
-                    <h3 class="text-4xl font-black text-slate-800">২০০+</h3>
-                    <p class="text-slate-500">উদাহরণ</p>
+                <div>
+                    <h3 class="text-4xl font-bold stat-num">২০০+</h3>
+                    <p class="text-[color:var(--slate)] text-sm mt-1">উদাহরণ</p>
                 </div>
-                <div class="text-center">
-                    <h3 class="text-4xl font-black text-slate-800">২০</h3>
-                    <p class="text-slate-500">মূল টপিকস</p>
+                <div>
+                    <h3 class="text-4xl font-bold stat-num">২০</h3>
+                    <p class="text-[color:var(--slate)] text-sm mt-1">মূল টপিকস</p>
                 </div>
-                <div class="text-center">
-                    <h3 class="text-4xl font-black text-slate-800">৪</h3>
-                    <p class="text-slate-500">পূর্ণাঙ্গ মডিউলস</p>
+                <div>
+                    <h3 class="text-4xl font-bold stat-num">৪</h3>
+                    <p class="text-[color:var(--slate)] text-sm mt-1">পূর্ণাঙ্গ মডিউলস</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <main id="curriculum" class="py-32 px-6 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
+    <!-- CURRICULUM MODULES -->
+    <main id="curriculum" class="py-28 px-6 max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div class="max-w-xl">
-                <h2 class="text-4xl font-black text-slate-900 mb-4">আপনার লার্নিং পাথওয়ে</h2>
-                <p class="text-lg text-slate-600">নিচের মডিউলগুলো ধারাবাহিকভাবে অধ্যয়ন করুন। প্রতিটি মডিউলে ৫টি করে অধ্যায় খুব সহজভাবে আলোচনা করা হয়েছে।</p>
+                <p class="text-[color:var(--blue)] text-sm font-semibold tracking-wide mb-2">লার্নিং পাথওয়ে</p>
+                <h2 class="text-4xl font-bold text-[color:var(--ink)]">চারটি ধারাবাহিক মডিউল</h2>
+                <p class="text-[color:var(--slate)] mt-3 leading-relaxed">প্রতিটি মডিউলে ৫টি করে অধ্যায়, একটির ওপর ভিত্তি করে পরেরটি — ধারাবাহিকভাবে অধ্যয়ন করুন।</p>
             </div>
-            <div class="text-slate-400 font-mono">STEP BY STEP ARABIC GRAMMAR LEARNING</div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            <div class="module-card bg-white p-10 rounded-[2.5rem]">
-                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-8">
-                    <i class="fa-solid fa-book-open"></i>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div class="module-card p-9 rounded-2xl" style="--accent:#2454e0; --accent-soft:#e8edfc">
+                <div class="flex items-center justify-between mb-7">
+                    <span class="badge w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold">০১</span>
+                    <span class="text-xs font-semibold tracking-wide text-[color:var(--slate)]">অধ্যায় ১–৫</span>
                 </div>
-                <h3 class="text-2xl font-black text-slate-900 mb-4">মডিউল ১: প্রাথমিক ভিত্তি</h3>
-                <p class="text-slate-500 mb-8 leading-relaxed">আরবী শব্দের মূল গঠন, নির্দিষ্টতা এবং লিঙ্গ ভেদে শব্দের পরিবর্তনের প্রাথমিক পাঠ।</p>
-                <ul class="space-y-3 mb-10 text-slate-700 font-medium">
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> অধ্যায় ১-৫: ইসম, ফিল ও হরফ</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> শামশিয়াহ-কমরিয়াহ ও মারিফা</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> হারফুল জার এর বিস্তারিত ব্যবহার</li>
+                <h3 class="text-2xl font-bold text-[color:var(--ink)] mb-3">প্রাথমিক ভিত্তি</h3>
+                <p class="text-[color:var(--slate)] mb-7 leading-relaxed">আরবী শব্দের মূল গঠন, নির্দিষ্টতা এবং লিঙ্গ ভেদে শব্দের পরিবর্তনের প্রাথমিক পাঠ।</p>
+                <ul class="space-y-2.5 mb-8 text-[color:var(--ink)]">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check" style="color:var(--accent)"></i> ইসম, ফিল ও হরফ</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check" style="color:var(--accent)"></i> শামশিয়াহ-কমরিয়াহ ও মারিফা</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check" style="color:var(--accent)"></i> হারফুল জার এর বিস্তারিত ব্যবহার</li>
                 </ul>
-                <a href="chapter1-5.html" class="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-blue-600 transition-colors w-full justify-center">মডিউল খুলুন <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="chapter1-5.html" class="link-btn inline-flex items-center gap-3 px-6 py-3 rounded-xl font-semibold w-full justify-center">মডিউল খুলুন <i class="fa-solid fa-arrow-right text-sm"></i></a>
             </div>
 
-            <div class="module-card bg-white p-10 rounded-[2.5rem]">
-                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-8">
-                    <i class="fa-solid fa-layer-group"></i>
+            <div class="module-card p-9 rounded-2xl" style="--accent:#0e8f8a; --accent-soft:#e1f5f4">
+                <div class="flex items-center justify-between mb-7">
+                    <span class="badge w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold">০২</span>
+                    <span class="text-xs font-semibold tracking-wide text-[color:var(--slate)]">অধ্যায় ৬–১০</span>
                 </div>
-                <h3 class="text-2xl font-black text-slate-900 mb-4">মডিউল ২: বাক্য গঠন</h3>
-                <p class="text-slate-500 mb-8 leading-relaxed">কিভাবে একাধিক শব্দ মিলে একটি পূর্ণাঙ্গ বাক্য তৈরি হয় এবং ইশারা বা দমীরের ব্যবহার।</p>
-                <ul class="space-y-3 mb-10 text-slate-700 font-medium">
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> অধ্যায় ৬-১০: দমীর (Pronouns)</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> ইশারা ও দমীরের প্রয়োগ</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> মাউসুফ ও সিফাত বিশ্লেষণ</li>
+                <h3 class="text-2xl font-bold text-[color:var(--ink)] mb-3">বাক্য গঠন</h3>
+                <p class="text-[color:var(--slate)] mb-7 leading-relaxed">কিভাবে একাধিক শব্দ মিলে একটি পূর্ণাঙ্গ বাক্য তৈরি হয় এবং ইশারা বা দমীরের ব্যবহার।</p>
+                <ul class="space-y-2.5 mb-8 text-[color:var(--ink)]">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check" style="color:var(--accent)"></i> দমীর (Pronouns)</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check" style="color:var(--accent)"></i> ইশারা ও দমীরের প্রয়োগ</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check" style="color:var(--accent)"></i> মাউসুফ ও সিফাত বিশ্লেষণ</li>
                 </ul>
-                <a href="chapter6-10.html" class="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-emerald-600 transition-colors w-full justify-center">মডিউল খুলুন <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="chapter6-10.html" class="link-btn inline-flex items-center gap-3 px-6 py-3 rounded-xl font-semibold w-full justify-center">মডিউল খুলুন <i class="fa-solid fa-arrow-right text-sm"></i></a>
             </div>
 
-            <div class="module-card bg-white p-10 rounded-[2.5rem]">
-                <div class="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-8">
-                    <i class="fa-solid fa-gears"></i>
+            <div class="module-card p-9 rounded-2xl" style="--accent:#e08b1d; --accent-soft:#fdf1e0">
+                <div class="flex items-center justify-between mb-7">
+                    <span class="badge w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold">০৩</span>
+                    <span class="text-xs font-semibold tracking-wide text-[color:var(--slate)]">অধ্যায় ১১–১৫</span>
                 </div>
-                <h3 class="text-2xl font-black text-slate-900 mb-4">মডিউল ৩: এরব ও ক্রিয়া</h3>
-                <p class="text-slate-500 mb-8 leading-relaxed">শব্দের শেষের পরিবর্তন (I'rab) এবং বচন ও ক্রিয়ার (Verb) কাল নির্ণয়।</p>
-                <ul class="space-y-3 mb-10 text-slate-700 font-medium">
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> অধ্যায় ১১-১৫: মারফু, মানসুব, মাজরুর</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> আদাদ (বচন) ও আতফু</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> ফিল: মাদী ও মুদারী বিশ্লেষণ</li>
+                <h3 class="text-2xl font-bold text-[color:var(--ink)] mb-3">এরব ও ক্রিয়া</h3>
+                <p class="text-[color:var(--slate)] mb-7 leading-relaxed">শব্দের শেষের পরিবর্তন (I'rab) এবং বচন ও ক্রিয়ার (Verb) কাল নির্ণয়।</p>
+                <ul class="space-y-2.5 mb-8 text-[color:var(--ink)]">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check" style="color:var(--accent)"></i> মারফু, মানসুব, মাজরুর</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check" style="color:var(--accent)"></i> আদাদ (বচন) ও আতফু</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check" style="color:var(--accent)"></i> ফিল: মাদী ও মুদারী বিশ্লেষণ</li>
                 </ul>
-                <a href="chapter11-15.html" class="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-amber-600 transition-colors w-full justify-center">মডিউল খুলুন <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="chapter11-15.html" class="link-btn inline-flex items-center gap-3 px-6 py-3 rounded-xl font-semibold w-full justify-center">মডিউল খুলুন <i class="fa-solid fa-arrow-right text-sm"></i></a>
             </div>
 
-            <div class="module-card bg-white p-10 rounded-[2.5rem]">
-                <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-2xl mb-8">
-                    <i class="fa-solid fa-brain"></i>
+            <div class="module-card p-9 rounded-2xl" style="--accent:#6f52d6; --accent-soft:#eee9fb">
+                <div class="flex items-center justify-between mb-7">
+                    <span class="badge w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold">০৪</span>
+                    <span class="text-xs font-semibold tracking-wide text-[color:var(--slate)]">অধ্যায় ১৬–২০</span>
                 </div>
-                <h3 class="text-2xl font-black text-slate-900 mb-4">মডিউল ৪: উন্নত সরফ</h3>
-                <p class="text-slate-500 mb-8 leading-relaxed">জটিল রূপান্তর পদ্ধতি, প্রশ্নবোধক বাক্য এবং জুমলার চূড়ান্ত প্রকারভেদ।</p>
-                <ul class="space-y-3 mb-10 text-slate-700 font-medium">
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> অধ্যায় ১৬-২০: সরফ ও মাজহুল</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> প্রশ্নবোধক ও না-বোধক বাক্য</li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i> জুমলা ইসমিয়াহ ও ফিলিয়াহ</li>
+                <h3 class="text-2xl font-bold text-[color:var(--ink)] mb-3">উন্নত সরফ</h3>
+                <p class="text-[color:var(--slate)] mb-7 leading-relaxed">জটিল রূপান্তর পদ্ধতি, প্রশ্নবোধক বাক্য এবং জুমলার চূড়ান্ত প্রকারভেদ।</p>
+                <ul class="space-y-2.5 mb-8 text-[color:var(--ink)]">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check" style="color:var(--accent)"></i> সরফ ও মাজহুল</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check" style="color:var(--accent)"></i> প্রশ্নবোধক ও না-বোধক বাক্য</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check" style="color:var(--accent)"></i> জুমলা ইসমিয়াহ ও ফিলিয়াহ</li>
                 </ul>
-                <a href="chapter16-20.html" class="inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-purple-600 transition-colors w-full justify-center">মডিউল খুলুন <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="chapter16-20.html" class="link-btn inline-flex items-center gap-3 px-6 py-3 rounded-xl font-semibold w-full justify-center">মডিউল খুলুন <i class="fa-solid fa-arrow-right text-sm"></i></a>
             </div>
 
         </div>
     </main>
 
-    <section class="py-24 bg-slate-900 text-white">
+    <!-- FULL SYLLABUS -->
+    <section class="py-24 bg-[color:var(--navy)] text-white">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-4xl font-black mb-16 text-center">সম্পূর্ণ কারিকুলাম সূচি</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16">
-                
+            <p class="text-blue-300 text-sm font-semibold tracking-wide text-center mb-2">রেফারেন্স</p>
+            <h2 class="text-4xl font-bold mb-16 text-center">সম্পূর্ণ কারিকুলাম সূচি</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-14">
+
                 <div>
-                    <h4 class="text-blue-400 font-bold mb-6 border-b border-blue-400/20 pb-2">ভিত্তি স্তর</h4>
-                    <ul class="space-y-4 text-slate-400">
-                        <li>১. ইসম এর পরিচয়</li>
-                        <li>২. শামশিয়াহ-কমরিয়াহ</li>
+                    <h4 class="text-blue-400 font-bold mb-6 border-b border-blue-400/25 pb-2">ভিত্তি স্তর</h4>
+                    <ul class="space-y-3 text-slate-300 text-sm">
+                        <li>১. ইসম এর পরিচয়</li>
+                        <li>২. শামশিয়াহ-কমরিয়াহ</li>
                         <li>৩. মারিফা-নাকিরা</li>
                         <li>৪. মুয়ান্নাস-মুজাক্কার</li>
                         <li>৫. হারফুল জার</li>
@@ -154,8 +230,8 @@
                 </div>
 
                 <div>
-                    <h4 class="text-emerald-400 font-bold mb-6 border-b border-emerald-400/20 pb-2">বাক্য স্তর</h4>
-                    <ul class="space-y-4 text-slate-400">
+                    <h4 class="text-teal-400 font-bold mb-6 border-b border-teal-400/25 pb-2">বাক্য স্তর</h4>
+                    <ul class="space-y-3 text-slate-300 text-sm">
                         <li>৬. মুবতাদা-খবর</li>
                         <li>৭. ইশমুল ইশারহ</li>
                         <li>৮. দমীর (মুনফাসিল)</li>
@@ -165,22 +241,22 @@
                 </div>
 
                 <div>
-                    <h4 class="text-amber-400 font-bold mb-6 border-b border-amber-400/20 pb-2">রূপান্তর স্তর</h4>
-                    <ul class="space-y-4 text-slate-400">
+                    <h4 class="text-amber-400 font-bold mb-6 border-b border-amber-400/25 pb-2">রূপান্তর স্তর</h4>
+                    <ul class="space-y-3 text-slate-300 text-sm">
                         <li>১১. মুদাফ-মুদাফ ইলাইহি</li>
                         <li>১২. মারফু-মানসুব-মাজরুর</li>
                         <li>১৩. আদাদ (বচন)</li>
-                        <li>১৪. আতফু (অব্যয়)</li>
+                        <li>১৪. আতফু (অব্যয়)</li>
                         <li>১৫. ফিল (মাদী-মুদারি)</li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-purple-400 font-bold mb-6 border-b border-purple-400/20 pb-2">উন্নত স্তর</h4>
-                    <ul class="space-y-4 text-slate-400">
+                    <h4 class="text-violet-400 font-bold mb-6 border-b border-violet-400/25 pb-2">উন্নত স্তর</h4>
+                    <ul class="space-y-3 text-slate-300 text-sm">
                         <li>১৬. সরফ (শব্দ রূপান্তর)</li>
                         <li>১৭. মাজহুল (Passive)</li>
-                        <li>১৮. আন নাহিইয়াহ</li>
+                        <li>১৮. আন নাহিইয়াহ</li>
                         <li>১৯. ইস্তিফহামিয়া</li>
                         <li>২০. জুমলার প্রকার</li>
                     </ul>
@@ -190,27 +266,23 @@
         </div>
     </section>
 
-    <footer class="py-12 bg-black text-center text-slate-600 border-t border-white/5">
-        <p class="mb-4">© <a href="https://www.grameenphone.academy/public-profile/GP153876" target = "_blank" style="color:SkyBlue;"><b>মোঃ আনিছুর রহমান</b></a> | আরবি ব্যাকরণ | সর্বস্বত্ব সংরক্ষিত</p>
+    <footer class="py-10 bg-[color:var(--ink)] text-center text-slate-400 border-t border-white/10 text-sm">
+        <p>© <a href="https://www.grameenphone.academy/public-profile/GP153876" target="_blank" class="text-blue-400 hover:underline"><b>মোঃ আনিছুর রহমান</b></a> | আরবি ব্যাকরণ | সর্বস্বত্ব সংরক্ষিত</p>
     </footer>
 
     <script>
-        // Scroll Reveal Animation
         const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('reveal');
             });
         }, observerOptions);
 
-        document.querySelectorAll('.module-card').forEach(card => {
+        document.querySelectorAll('.module-card, .tool-card').forEach(card => {
             card.classList.add('scroll-reveal');
             observer.observe(card);
         });
     </script>
-       
+
 </body>
 </html>
-
